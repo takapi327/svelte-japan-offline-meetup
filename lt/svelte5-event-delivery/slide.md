@@ -46,6 +46,11 @@ Svelte3,4を使用したUIライブラリを開発しており、それが割と
 
 # Svelte5
 
+Svelte4で非推奨になってた機能とかがなくなってしまった。
+ただ更新しないわけにはいかないので、Svete5の機能で作り直してみる。
+
+---
+
 あれ、めっちゃ楽じゃね？
 
 ---
@@ -154,6 +159,27 @@ Svelte3,4では`createEventDispatcher`などを使用してイベントを伝搬
 - プロダクトで共通コンポーネントを作成する際などで、デザインなどは同じなのにフォーム送信用のボタン、画面遷移用のボタン、モーダル表示用のボタンという風に用途ごとにコンポーネントが生まれてしまう可能性がある
 
 - 条件判定用のフラグを用意して、スーパーコンポーネントを作成すると無闇に改修できなくなってしまうなんてことも...
+
+---
+
+# 汎用的に作るために
+
+UIライブラリは汎用的に作る必要がある
+そのため`dispatch`や特定の関数で作成したイベントしか使用できないものになってしまうような実装はなるべく避けたい
+
+ライブラリが頑張って柔軟に対応できるように作らなければならない
+
+---
+
+svelte-material-uiなどのライブラリでは、これを解消するために`SvelteComponent`の`$on`をラップして、イベントをいい感じに受け渡せるようにしている
+
+- forwardEventsBuilder
+https://github.com/hperrin/svelte-material-ui/blob/master/packages/common/src/internal/forwardEventsBuilder.ts
+- useActions
+https://github.com/hperrin/svelte-material-ui/blob/master/packages/common/src/internal/useActions.ts
+- etc...
+
+ただし、Svelteの内部構造を理解しておかないといけないので大変...
 
 ---
 
@@ -352,33 +378,33 @@ A. イベントハンドラは指定する必要はない。コンポーネン�
 
 ---
 
-# UIライブラリ開発も捗る！？
-
-UIライブラリは汎用的に作る必要がある
-
-`dispatch`や特定の関数だけだと指定したイベントしか使用できないものになってしまいます
-
-ライブラリが頑張って柔軟に対応できるように作らなければならない
-
----
-
-svelte-material-uiなどのライブラリでは、これを解消するために`SvelteComponent`の`$on`をラップして、イベントをいい感じに受け渡せるようにしている
-
-- forwardEventsBuilder
-https://github.com/hperrin/svelte-material-ui/blob/master/packages/common/src/internal/forwardEventsBuilder.ts
-- useActions
-https://github.com/hperrin/svelte-material-ui/blob/master/packages/common/src/internal/useActions.ts
-- etc...
-
-ただし、Svelteの内部構造を理解しておかないといけないので大変...
-
----
-
 # Svelte5では
 
 イベントをそのまま渡すことが可能かつ、コンポーネント内で使いたいイベントがあれば自由に使える
 
-なので、複雑な内部処理の置き換えを作る必要がない！
+Svelte3,4の時みたいにSvelteComponentの`$on`をゴニョゴニョする必要がなくなった
+
+※ SvelteComponentの`$on`はSvelte5でなくなった
+
+---
+
+# しんどかったものが
+
+- UIライブラリは汎用的に作る必要がある
+=> 標準機能だけで実現可能に！
+
+- 汎用的に作るにはイベント受け渡しをライブラリ側で頑張る必要がある
+=> 何も頑張ってない！
+
+- 頑張ると実装コスト、レビューコストが上がってしまう
+=> 標準機能だから敷居はほとんどなくなった！
+
+- 使ってた機能がSvelte4で非推奨になってしまった
+=> むしろいらない！
+
+---
+
+うん、めっちゃ楽！
 
 ---
 
