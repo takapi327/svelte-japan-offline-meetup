@@ -4,7 +4,9 @@ marp: true
 
 # Svelte5でのevent受け渡し
 
+Svelte Japan Offline Meetup #2 
 2024/02/21 (水)
+
 株式会社 Nextbeat
 富永孝彦
 
@@ -12,12 +14,14 @@ marp: true
 
 # 自己紹介
 
-業務ではScala, Typescriptを使ったバックエンド、フロントエンド開発やインフラ開発などいろいろやっています。
-
-業務外ではScalaをメインでOSS開発をしたり、GoやReactを書いたりいろいろ
-
-X: @takapi327
-Github: https://github.com/takapi327
+- 名前: 富永 孝彦 (とみなが たかひこ)
+  - X: @takapi327
+  - Github: https://github.com/takapi327
+- 所属: 株式会社 Nextbeat
+- 趣味
+  - ScalaでOSS開発
+  - プログラミングに関する情報収集
+  - ゲーム
 
 ---
 
