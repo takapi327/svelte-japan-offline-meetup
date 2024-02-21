@@ -12,10 +12,9 @@ marp: true
 
 # 自己紹介
 
-- 業務ではScala, Typescriptを使ったバックエンド、フロントエンド開発やインフラ開発などいろいろやっています。
-- 業務外では
-  - ScalaのOSS開発
-  - React, Goでのサービス開発
+業務ではScala, Typescriptを使ったバックエンド、フロントエンド開発やインフラ開発などいろいろやっています。
+
+業務外ではScalaをメインでOSS開発をしたり、GoやReactを書いたりいろいろ
 
 X: @takapi327
 Github: https://github.com/takapi327
@@ -408,19 +407,6 @@ Svelte3,4の時みたいにSvelteComponentの`$on`をゴニョゴニョする必
 
 ---
 
-# 他にもいろんな新機能が！
-
-- $state
-- $derived
-- $effect
-  - $effect.pre
-  - $effect.active
-  - $effect.root
-- $inspect
-- Snippets
-
----
-
 # 触ってみて
 
 最初はSvelte5で内部のAPIを使用できなくなったり(Svelte4で非推奨)、いろいろな機能が変わるので大変そうとか複雑なりそうと思っていました。
@@ -434,6 +420,19 @@ Svelte3,4で書かれたUIライブラリも改修するのは大変だと思い
 つまり、Svelteが書ければ誰でも保守できるライブラリになることも可能！？
 (むしろライブラリなどいらないのでは？)
 
+---
+
+# 他にもいろんな新機能が！
+
+- $state
+- $derived
+- $effect
+  - $effect.pre
+  - $effect.active
+  - $effect.root
+- $inspect
+- Snippets
+
 早く正式版を使いたいので、リリースが楽しみですね！
 
 ---
@@ -441,11 +440,22 @@ Svelte3,4で書かれたUIライブラリも改修するのは大変だと思い
 # Svelte5 UI ライブラリ
 
 以下でSvelte5の新機能を使ってHeadless UIライブラリを趣味で開発しています。
+(まだ1個しかないけどw)
 
-新機能の使い方の参考や興味があれば触ってみてください。
+新機能の使い方の参考にしていただければ！
 また、もっとこうした使い方の方がいいよなどあれば教えていただけると嬉しいです！
 
 https://github.com/takapi327/svelte-headlessui
+
+---
+
+# Nextbeatでは
+
+Svelte, SvelteKitを採用しており、現在3つ目の技術移行中です！
+
+こんな感じでSvelteの採用や新バージョンへの追従を積極的に行なっています。
+
+興味がありましたら[会社資料説明](https://speakerdeck.com/nextbeat/company-profile)を見ていただけると嬉しいです。
 
 ---
 
@@ -455,3 +465,4 @@ https://github.com/takapi327/svelte-headlessui
 2. https://qiita.com/oekazuma/items/ab617096af10ad94356e
 3. https://zenn.dev/tomoam/scraps/375fb71c09fe0f
 4. https://www.youtube.com/watch?v=pTgIx-ucMsY
+5. https://svelte.jp/blog/runes
