@@ -149,9 +149,34 @@ Svelte3,4では`createEventDispatcher`などを使用してイベントを伝搬
 
 ---
 
+もしくは`on:`ディレクティブに値を渡さず、イベントを転送してもらって親コンポーネントでイベントをリッスンするという方法もあります。
+
+```ts
+// Button.svelte
+<button on:click>
+  クリック
+</button>
+
+// App.svelte
+<script lang="ts">
+  import Button from './Button.svelte'
+
+  function handleMessage(event) {
+    alert('こんにちは！')
+  }
+</script>
+
+<Button on:click={handleMessage}/>
+```
+
+[Playground](https://svelte-5-preview.vercel.app/#H4sIAAAAAAAAE32PQUrEQBBFr9LUJjMQJvuQCejeE9guYlIZGzvVTXdlQEIWSY4wJ3Cri1zA2_QBvIK0EWFAXP7i1_v_D9AqjR7y-wGo6hByuLEWUuAXG4U_o2aEFLzpXR0vha-dsix0RaejBPYSSklCqM4ax-K2ZzYkWmc6kRyyTR42TCJJkuS2p5qVIfFUUaPxDr2vTrjDMxLvxRBhQlQaHe-SMF3CfAnTe5hew7R-fkzJPhpGSUW2NSkjtfjJNZTXWtXPx-EKPmalJEihM41qFTaQs-txTH9Hb-__7n68TvgeHeY1LG9hWcK8xkab58-sh_ELzcISG2wBAAA=)
+
+---
+
 # 運用が大変？
 
-- 使用したいイベントごとに処理を記載しなければいけない
+- 使用したいイベントは全て記載しなければいけない
+  - だたユーザーがどのように使うかはわからないから制限するか全部を有効にする必要もあったり
 
 - コンポーネントが大きくなってくるとイベントのforwardやdispatchなどの処理が複雑になってしまう
 
@@ -309,7 +334,8 @@ Svelte5から追加された`$props`とは、`export let`の代わりとして�
 # 何が嬉しい？
 
 - イベントハンドラごとに`dispatch`や関数を用意する必要がなくなった
-- 子コンポーネントでのイベントハンドラ使用も簡単になった
+- 予めイベントを設定しておく必要もない
+- 自身でイベントハンドラ使用したい場合も簡単になった
 
 ---
 
@@ -367,23 +393,22 @@ A. イベントハンドラは指定する必要はない。コンポーネン�
 
 ---
 
+# Svelte5
+
+用途ごとにコンポーネントを用意する必要も条件分岐を使ったスーパーコンポーネントを作成する必要もない！
+
+イベントをそのまま渡すことが可能かつ、コンポーネント内で使いたいイベントがあれば自由に使える
+
+Selte3,4の時みたいにSvelteComponentの`$on`をゴニョゴニョする必要がなくなった
+※ SvelteComponentの`$on`はSvelte5でなくなった
+
+---
+
 # つまり
 
 実装コストは下がったのに自由度は上がった！
 
-用途ごとにコンポーネントを用意する必要も条件分岐を使ったスーパーコンポーネントを作成する必要もない！
-
 より柔軟なコンポーネントを作成可能に！
-
----
-
-# Svelte5では
-
-イベントをそのまま渡すことが可能かつ、コンポーネント内で使いたいイベントがあれば自由に使える
-
-Svelte3,4の時みたいにSvelteComponentの`$on`をゴニョゴニョする必要がなくなった
-
-※ SvelteComponentの`$on`はSvelte5でなくなった
 
 ---
 
