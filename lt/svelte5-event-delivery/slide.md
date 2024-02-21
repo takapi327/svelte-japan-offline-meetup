@@ -19,7 +19,7 @@ Svelte Japan Offline Meetup #2
   - Github: https://github.com/takapi327
 - 所属: 株式会社 Nextbeat
 - 趣味
-  - ScalaでOSS開発
+  - ScalaでOSS開発やコントリビュート、OSSのコード読む
   - プログラミングに関する情報収集
   - ゲーム
 
@@ -192,22 +192,41 @@ Svelte3,4では`createEventDispatcher`などを使用してイベントを伝搬
 
 # 汎用的に作るために
 
-UIライブラリは汎用的に作る必要がある
-そのため`dispatch`や特定の関数で作成したイベントしか使用できないものになってしまうような実装はなるべく避けたい
+UIライブラリは汎用的に作りたいので、`dispatch`や特定の関数で作成したイベントしか使用できないものになってしまうような実装はなるべく避けたい
 
 ライブラリが頑張って柔軟に対応できるように作らなければならない
 
 ---
 
-svelte-material-uiなどのライブラリでは、これを解消するために`SvelteComponent`の`$on`をラップして、イベントをいい感じに受け渡せるようにしている
+じゃあどうするの？
 
-- forwardEventsBuilder
-https://github.com/hperrin/svelte-material-ui/blob/master/packages/common/src/internal/forwardEventsBuilder.ts
-- useActions
-https://github.com/hperrin/svelte-material-ui/blob/master/packages/common/src/internal/useActions.ts
+---
+
+svelte-material-uiなどのライブラリでは、これを解消するために`SvelteComponent`の`$on`をラップして、イベントをいい感じに受け渡せるようにするための処理が複数作られている
+
+- [forwardEventsBuilder](https://github.com/hperrin/svelte-material-ui/blob/master/packages/common/src/internal/forwardEventsBuilder.ts)
+- [useActions](https://github.com/hperrin/svelte-material-ui/blob/master/packages/common/src/internal/useActions.ts)
 - etc...
 
-ただし、Svelteの内部構造を理解しておかないといけないので大変...
+---
+
+こんな感じで`SvelteComponent`の`$on`関数をオーバーライドして、すべてのバインドされたイベントを転送しています。
+
+```ts
+export function forwardEventsBuilder(component: SvelteComponent) {
+  ...
+  component.$on = (fullEventType: string, callback: (event: any) => void) => {...}
+  ...
+}
+```
+
+弊社のライブラリも同じように作成を行なっていました。
+
+---
+
+Svelteの内部構造を理解しておかないといけないので大変...
+
+Svelteは簡単に書けるはずなのに難しくなってしまった...
 
 ---
 
@@ -495,3 +514,7 @@ Svelte, SvelteKitを採用しており、現在3つ目の技術移行中です�
 3. https://zenn.dev/tomoam/scraps/375fb71c09fe0f
 4. https://www.youtube.com/watch?v=pTgIx-ucMsY
 5. https://svelte.jp/blog/runes
+
+---
+
+# ご清聴ありがとうございました！
