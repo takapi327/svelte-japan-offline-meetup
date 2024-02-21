@@ -488,7 +488,7 @@ Svelte3,4で書かれたUIライブラリも改修するのは大変だと思い
 # Svelte5 UI ライブラリ
 
 以下でSvelte5の新機能を使ってHeadless UIライブラリを趣味で開発しています。
-(まだ1個しかないけどw)
+(まだDialogしかないけどw)
 
 新機能の使い方の参考にしていただければ！
 また、もっとこうした使い方の方がいいよなどあれば教えていただけると嬉しいです！
@@ -499,7 +499,7 @@ https://github.com/takapi327/svelte-headlessui
 
 # Nextbeatでは
 
-Svelte, SvelteKitを採用しており、現在3つ目の技術移行中です！
+Svelte, SvelteKitを採用しており、現在3つ目のプロジェクトを技術移行中です！
 
 こんな感じでSvelteの採用や新バージョンへの追従を積極的に行なっています。
 
